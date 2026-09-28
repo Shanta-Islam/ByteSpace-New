@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function page() {
+export default function Register() {
   return (
-    <div>page</div>
+    <div>This is register pAgE</div>
   )
 }

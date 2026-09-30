@@ -1,26 +1,128 @@
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap");
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-poppins), "Poppins", sans-serif;
+  --font-sans: "Satoshi", sans-serif;
+  --font-body: "Satoshi", sans-serif;
+  --color-primary: #003be2;
+  --color-lime-brand: #d4fb20;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --font-heading: var(--font-poppins), "Poppins", sans-serif;
+  --font-body: "Satoshi", sans-serif;
+  --color-brand-blue: #003be2;
+  --color-brand-lime: #d4fb20;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: "Satoshi", sans-serif;
+  color: #111827;
+  background-color: #ffffff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Typography styles matching design spec */
+.heading-l {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(38px, 5vw, 72px);
+  line-height: 1.2;
+}
+
+.heading-m {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(28px, 3.5vw, 44px);
+  line-height: 1.2;
+}
+
+.heading-s {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(24px, 2.8vw, 36px);
+  line-height: 1.2;
+}
+
+.heading-xs {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.body-l {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.body-m {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.body-s {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Blueprint grid background */
+.bg-blueprint-grid {
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.12) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.12) 1px,
+      transparent 1px
+    );
+  background-size: 88px 88px;
+  background-position: center top;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }

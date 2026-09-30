@@ -13,7 +13,7 @@ import {
 } from "react-icons/fi";
 import { BsBarChartFill, BsCheckCircleFill } from "react-icons/bs";
 import { FaStar } from "react-icons/fa";
-import { HiUsers, HiVideoCamera } from "react-icons/hi2";
+import { HiOutlineUsers, HiOutlineVideoCamera, HiUsers, HiVideoCamera } from "react-icons/hi2";
 
 export default function CourseDetailsPage() {
   const [activeTab, setActiveTab] = useState<"about" | "lesson" | "reviews">("about");
@@ -33,7 +33,7 @@ export default function CourseDetailsPage() {
       {/* ========================================================================= */}
       {/* 1. HERO BANNER WITH NAVIGATION                                            */}
       {/* ========================================================================= */}
-      <section className="relative w-full bg-primary pb-16 sm:pb-24 lg:pb-32 overflow-hidden">
+      <section className="relative w-full bg-primary pb-[300px] sm:pb-[500px] lg:pb-[560px] overflow-hidden">
         {/* Seamless Blueprint Grid Pattern */}
         <div
           className="absolute inset-0 pointer-events-none bg-blueprint-grid opacity-90"
@@ -43,34 +43,34 @@ export default function CourseDetailsPage() {
         {/* Hero Course Header Info */}
         <div className="relative z-20 max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32">
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-            <div className="max-w-2xl">
-              <h1 className="text-white font-bold text-[30px] sm:text-[38px] lg:text-[42px] font-heading leading-tight tracking-tight">
+            <div className="">
+              <h1 className="text-white font-semibold text-[30px] sm:text-[36px] font-heading leading-tight tracking-tight">
                 Build Digital Asset: A Comprehensive Guide
               </h1>
-              <p className="mt-2.5 text-[#e5e6e8] text-[15px] sm:text-[17px] font-normal font-body">
+              <p className="mt-2.5 text-[#d5d5d5] text-[15px] sm:text-[20px] font-semibold font-body">
                 Unlock the Power of Digital Creation with Expert Guidance
               </p>
-              <p className="mt-2 text-sm text-[#e5e6e8]">
+              <p className="mt-2 text-lg font-medium text-[#f1f4fe]">
                 by{" "}
-                <span className="text-lime-brand font-semibold hover:underline cursor-pointer">
+                <span className="text-lime-brand font-medium hover:underline cursor-pointer">
                   purepearl studio
                 </span>
               </p>
 
               {/* Meta Badges Row */}
               <div className="mt-5 flex flex-wrap items-center gap-2.5 sm:gap-3">
-                <div className="inline-flex items-center gap-2 bg-white text-gray-800 px-3.5 py-1.5 rounded-full text-xs sm:text-[13px] font-medium shadow-2xs">
+                <div className="inline-flex items-center gap-2 bg-white text-[#242528] px-3.5 py-1.5 rounded-3xl text-xs sm:text-[13px] lg:text-[16px]  font-medium shadow-2xs">
                   <BsBarChartFill className="w-3.5 h-3.5 text-primary" />
                   <span>Intermediate</span>
                 </div>
 
-                <div className="inline-flex items-center gap-1.5 bg-white text-gray-800 px-3.5 py-1.5 rounded-full text-xs sm:text-[13px] font-medium shadow-2xs">
-                  <FaStar className="w-3.5 h-3.5 text-amber-400" />
+                <div className="inline-flex items-center gap-2 bg-white text-[#242528] px-3.5 py-1.5 rounded-3xl text-xs sm:text-[13px] lg:text-[16px]  font-medium shadow-2xs">
+                  <FaStar className="w-3.5 h-3.5 text-primary" />
                   <span>4.8 (172 reviews)</span>
                 </div>
 
-                <div className="inline-flex items-center gap-2 bg-white text-gray-800 px-3.5 py-1.5 rounded-full text-xs sm:text-[13px] font-medium shadow-2xs">
-                  <HiUsers className="w-4 h-4 text-primary" />
+                <div className="inline-flex items-center gap-2 bg-white text-[#242528] px-3.5 py-1.5 rounded-3xl text-xs sm:text-[13px] lg:text-[16px]  font-medium shadow-2xs">
+                  <HiOutlineUsers className="w-4 h-4 text-primary" />
                   <span>199 Students</span>
                 </div>
               </div>
@@ -94,21 +94,22 @@ export default function CourseDetailsPage() {
       {/* ========================================================================= */}
       {/* 2. MAIN COURSE CONTENT & SIDEBAR ENROLLMENT                                */}
       {/* ========================================================================= */}
-      <section className="relative z-30 max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 -mt-10 sm:-mt-16 lg:-mt-24 pb-20">
+      <section className="relative z-30 max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 -mt-[280px] sm:-mt-[480px] lg:-mt-[520px] pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* ================= LEFT MAIN COLUMN ================= */}
           <div className="lg:col-span-8 flex flex-col gap-8">
-            {/* Video Player Preview Container */}
+            {/* VIDEO / STUDENT IMAGE */}
             <div className="relative w-full aspect-16/10 rounded-[28px] overflow-hidden bg-[#e6e8eb] shadow-xl border border-white/40 group">
               <Image
                 src="/images/hero/hero-student.png"
                 alt="Course Video Preview"
                 fill
                 priority
+                sizes="(max-width: 1024px) 100vw, 66vw"
                 className="object-cover object-top"
               />
 
-              {/* Centered Frosted Play Button */}
+              {/* Play Button */}
               <button
                 type="button"
                 aria-label="Play course preview video"
@@ -117,17 +118,15 @@ export default function CourseDetailsPage() {
                 <FiPlay className="w-7 h-7 sm:w-8 sm:h-8 fill-gray-900 ml-1" />
               </button>
             </div>
-
             {/* Tab Navigation (About / Lesson / Reviews) */}
-            <div className="flex items-center gap-2.5 pt-2">
+            <div className="flex items-center gap-2.5 pt-2 mt-16">
               <button
                 type="button"
                 onClick={() => setActiveTab("about")}
-                className={`px-6 py-2 rounded-full text-xs sm:text-[14px] font-medium transition-all cursor-pointer ${
-                  activeTab === "about"
-                    ? "bg-lime-brand text-black font-semibold shadow-xs"
-                    : "bg-[#f5f5f6] text-[#4b4c53] hover:text-black hover:bg-gray-200"
-                }`}
+                className={`px-6 py-2 rounded-3xl text-xs sm:text-[14px] lg:text-[16px]  font-medium transition-all cursor-pointer ${activeTab === "about"
+                  ? "bg-lime-brand text-[#242528] font-medium shadow-xs"
+                  : "bg-[#f5f5f6] text-[#4f4f4f] font-medium hover:text-black hover:bg-gray-200"
+                  }`}
               >
                 About
               </button>
@@ -135,11 +134,10 @@ export default function CourseDetailsPage() {
               <button
                 type="button"
                 onClick={() => setActiveTab("lesson")}
-                className={`px-6 py-2 rounded-full text-xs sm:text-[14px] font-medium transition-all cursor-pointer ${
-                  activeTab === "lesson"
-                    ? "bg-lime-brand text-black font-semibold shadow-xs"
-                    : "bg-[#f5f5f6] text-[#4b4c53] hover:text-black hover:bg-gray-200"
-                }`}
+                className={`px-6 py-2 rounded-3xl text-xs sm:text-[14px] lg:text-[16px]  font-medium transition-all cursor-pointer ${activeTab === "lesson"
+                  ? "bg-lime-brand text-[#242528] font-medium shadow-xs"
+                  : "bg-[#f5f5f6] text-[#4f4f4f] font-medium hover:text-black hover:bg-gray-200"
+                  }`}
               >
                 Lesson
               </button>
@@ -147,11 +145,10 @@ export default function CourseDetailsPage() {
               <button
                 type="button"
                 onClick={() => setActiveTab("reviews")}
-                className={`px-6 py-2 rounded-full text-xs sm:text-[14px] font-medium transition-all cursor-pointer ${
-                  activeTab === "reviews"
-                    ? "bg-lime-brand text-black font-semibold shadow-xs"
-                    : "bg-[#f5f5f6] text-[#4b4c53] hover:text-black hover:bg-gray-200"
-                }`}
+                className={`px-6 py-2 rounded-3xl text-xs sm:text-[14px] lg:text-[16px]  font-medium transition-all cursor-pointer ${activeTab === "reviews"
+                  ? "bg-lime-brand text-[#242528] font-medium shadow-xs"
+                  : "bg-[#f5f5f6] text-[#4f4f4f] font-medium hover:text-black hover:bg-gray-200"
+                  }`}
               >
                 Reviews
               </button>
@@ -162,10 +159,10 @@ export default function CourseDetailsPage() {
               <div className="flex flex-col gap-9 pt-2">
                 {/* Description */}
                 <div>
-                  <h2 className="font-bold text-gray-950 text-[22px] font-heading tracking-tight mb-4">
+                  <h2 className="font-semibold text-black text-[20px] font-heading tracking-tight mb-4">
                     Description
                   </h2>
-                  <div className="space-y-4 text-gray-600 text-[14px] sm:text-[15px] leading-[1.7] font-body">
+                  <div className="space-y-4 text-[#4f4f4f] text-[14px] sm:text-[16px] leading-[1.7] font-body">
                     <p>
                       Embark on an enlightening exploration into the world of
                       digital creation with our comprehensive course, &ldquo;Build
@@ -201,7 +198,7 @@ export default function CourseDetailsPage() {
 
                 {/* Sneak Peek */}
                 <div>
-                  <h3 className="font-bold text-gray-950 text-[20px] font-heading tracking-tight mb-4">
+                  <h3 className="font-semibold text-black text-[20px] font-heading tracking-tight mb-4">
                     Sneak Peek
                   </h3>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
@@ -228,10 +225,10 @@ export default function CourseDetailsPage() {
 
                 {/* Key Points */}
                 <div>
-                  <h3 className="font-bold text-gray-950 text-[20px] font-heading tracking-tight mb-4">
+                  <h3 className="font-semibold text-black text-[20px] font-heading tracking-tight mb-4">
                     Key Points
                   </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <div className="grid grid-cols-1 gap-3.5">
                     {[
                       "Foundational Concept",
                       "Design Principles Mastery",
@@ -244,7 +241,7 @@ export default function CourseDetailsPage() {
                     ].map((point, index) => (
                       <div key={index} className="flex items-center gap-2.5">
                         <BsCheckCircleFill className="w-4 h-4 text-primary shrink-0" />
-                        <span className="text-[14px] sm:text-[15px] text-gray-800 font-medium font-body">
+                        <span className="text-[14px] sm:text-[16px] text-[#4b4c53] font-body">
                           {point}
                         </span>
                       </div>
@@ -259,10 +256,10 @@ export default function CourseDetailsPage() {
               <div className="flex flex-col gap-9 pt-2">
                 {/* Explore the Modules */}
                 <div>
-                  <h2 className="font-bold text-gray-950 text-[22px] font-heading tracking-tight mb-2">
+                  <h2 className="font-medium text-black text-[20px] font-heading tracking-tight mb-2">
                     Explore the Modules
                   </h2>
-                  <p className="text-gray-600 text-[14px] sm:text-[15px] leading-relaxed font-body">
+                  <p className="text-[#4b4c53] text-[14px] sm:text-[16px] leading-relaxed font-body">
                     Immerse yourself in the course content as we break down each
                     module into comprehensive lessons, providing practical
                     insights and hands-on experiences.
@@ -271,7 +268,7 @@ export default function CourseDetailsPage() {
 
                 {/* Lesson List */}
                 <div>
-                  <h3 className="font-bold text-gray-950 text-[20px] font-heading tracking-tight mb-5">
+                  <h3 className="font-semibold text-[#242528] text-[20px] font-heading tracking-tight mb-5">
                     Lesson List
                   </h3>
                   <div className="space-y-4">
@@ -306,13 +303,13 @@ export default function CourseDetailsPage() {
                         className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-gray-100 hover:border-gray-200 transition-colors shadow-2xs"
                       >
                         <div className="w-10 h-10 rounded-full bg-lime-brand flex items-center justify-center shrink-0 mt-0.5">
-                          <HiVideoCamera className="w-5 h-5 text-gray-950" />
+                          <HiOutlineVideoCamera className="w-5 h-5 text-gray-950" />
                         </div>
                         <div>
-                          <h4 className="font-bold text-gray-950 text-[16px] font-heading">
+                          <h4 className="font-medium text-[#242528] text-[16px] font-heading">
                             {mod.title}
                           </h4>
-                          <p className="mt-1 text-gray-600 text-[13px] sm:text-[14px] leading-relaxed font-body">
+                          <p className="mt-1 text-[#4b4c53] text-[13px] sm:text-[16px] leading-relaxed font-body">
                             {mod.desc}
                           </p>
                         </div>
@@ -323,10 +320,10 @@ export default function CourseDetailsPage() {
 
                 {/* Lesson Content Description */}
                 <div>
-                  <h3 className="font-bold text-gray-950 text-[20px] font-heading tracking-tight mb-2">
+                  <h3 className="font-semibold text-[#242528] text-[20px] font-heading tracking-tight mb-2">
                     Lesson Content
                   </h3>
-                  <p className="text-gray-600 text-[14px] sm:text-[15px] leading-relaxed font-body">
+                  <p className="text-[#4b4c53] text-[14px] sm:text-[16px] leading-relaxed font-body">
                     Engage with each lesson through captivating video content,
                     detailed textual explanations, and interactive elements.
                     Download resources, complete assignments, and test your
@@ -336,20 +333,20 @@ export default function CourseDetailsPage() {
 
                 {/* Lesson Progress Tracking */}
                 <div>
-                  <h3 className="font-bold text-gray-950 text-[20px] font-heading tracking-tight mb-2">
+                  <h3 className="font-semibold text-[#242528] text-[20px] font-heading tracking-tight mb-2">
                     Lesson Progress Tracking
                   </h3>
-                  <p className="text-gray-600 text-[14px] sm:text-[15px] leading-relaxed font-body mb-4">
+                  <p className="text-[#4b4c53] text-[14px] sm:text-[16px] leading-relaxed font-body mb-4">
                     Witness your growth as you complete lessons, with an intuitive
                     progress tracking feature guiding you through your learning
                     journey.
                   </p>
 
                   <div className="border border-gray-200 rounded-2xl p-5 sm:p-6 bg-white shadow-2xs max-w-xl">
-                    <span className="text-xs font-medium text-gray-500 block mb-1">
+                    <span className="text-[14px] font-medium text-[#242528] block mb-1">
                       Learning Progress
                     </span>
-                    <span className="text-3xl font-bold font-heading text-black block mb-3">
+                    <span className="text-4xl font-semibold font-heading text-[#242528] block mb-3">
                       55%
                     </span>
                     <div className="w-full h-2.5 bg-gray-100 rounded-full overflow-hidden">
@@ -368,10 +365,10 @@ export default function CourseDetailsPage() {
               <div className="flex flex-col gap-9 pt-2">
                 {/* What Learners Are Saying */}
                 <div>
-                  <h2 className="font-bold text-gray-950 text-[22px] font-heading tracking-tight mb-2">
+                  <h2 className="font-semibold text-black text-[20px] font-heading tracking-tight mb-2">
                     What Learners Are Saying
                   </h2>
-                  <p className="text-gray-600 text-[14px] sm:text-[15px] leading-relaxed font-body">
+                  <p className="text-[#4b4c53] text-[14px] sm:text-[16px] leading-relaxed font-body">
                     Discover what our learners have to say about their experience
                     with &ldquo;Build Digital Assets: A Comprehensive Guide.&rdquo;
                     Read reviews and ratings from individuals who have embarked on
@@ -383,10 +380,10 @@ export default function CourseDetailsPage() {
                 <div className="p-6 sm:p-7 rounded-2xl bg-white border border-gray-100 shadow-2xs flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
                   {/* Left Ratings Box */}
                   <div className="bg-lime-brand rounded-2xl p-6 text-center w-36 sm:w-40 shrink-0">
-                    <span className="text-xs font-semibold text-gray-800 block">
+                    <span className="text-[14px] font-semibold text-[#242528] block">
                       Ratings
                     </span>
-                    <span className="text-4xl sm:text-5xl font-extrabold text-black font-heading mt-1 block">
+                    <span className="text-4xl font-semibold text-[#242528] font-heading mt-1 block">
                       4.7
                     </span>
                   </div>
@@ -394,11 +391,11 @@ export default function CourseDetailsPage() {
                   {/* Right Rating Breakdown Bars */}
                   <div className="flex-1 w-full space-y-2">
                     {[
-                      { stars: 5, fill: "85%", count: 120 },
+                      { stars: 5, fill: "85%", count: 720 },
                       { stars: 4, fill: "50%", count: 120 },
-                      { stars: 3, fill: "20%", count: 31 },
-                      { stars: 2, fill: "10%", count: 10 },
-                      { stars: 1, fill: "5%", count: 14 },
+                      { stars: 3, fill: "20%", count: 21 },
+                      { stars: 2, fill: "10%", count: 12 },
+                      { stars: 1, fill: "5%", count: 16 },
                     ].map((row) => (
                       <div key={row.stars} className="flex items-center gap-3 text-xs text-gray-500">
                         <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
@@ -411,9 +408,8 @@ export default function CourseDetailsPage() {
                           {[...Array(5)].map((_, i) => (
                             <FaStar
                               key={i}
-                              className={`w-3 h-3 ${
-                                i < row.stars ? "text-gray-900" : "text-gray-200"
-                              }`}
+                              className={`w-3 h-3 ${i < row.stars ? "text-[#4b4c53]" : "text-gray-200"
+                                }`}
                             />
                           ))}
                         </div>
@@ -427,7 +423,7 @@ export default function CourseDetailsPage() {
 
                 {/* Individual Reviews */}
                 <div>
-                  <h3 className="font-bold text-gray-950 text-[20px] font-heading tracking-tight mb-4">
+                  <h3 className="font-semibold text-[#242528] text-[20px] font-heading tracking-tight mb-4">
                     Individual Reviews:
                   </h3>
 
@@ -438,11 +434,10 @@ export default function CourseDetailsPage() {
                         key={f}
                         type="button"
                         onClick={() => setReviewFilter(f)}
-                        className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
-                          reviewFilter === f
-                            ? "bg-lime-brand text-black font-semibold"
-                            : "bg-[#f5f5f6] text-[#4b4c53] hover:text-black"
-                        }`}
+                        className={`px-4 py-1.5 rounded-full text-base font-medium transition-all cursor-pointer ${reviewFilter === f
+                          ? "bg-lime-brand text-[#242528]  font-medium"
+                          : "bg-[#f5f5f6] text-[#4b4c53] hover:text-black"
+                          }`}
                       >
                         {f === "all" ? "All rating" : `★ ${f}`}
                       </button>
@@ -500,27 +495,27 @@ export default function CourseDetailsPage() {
                               />
                             </div>
                             <div>
-                              <h4 className="font-bold text-gray-950 text-sm font-heading">
+                              <h4 className="font-medium text-[#242528] text-lg font-heading">
                                 {rev.name}
                               </h4>
-                              <span className="text-xs text-gray-400 block font-body">
+                              <span className="text-lg text-[#4b4c53] block font-body">
                                 {rev.role}
                               </span>
                             </div>
                           </div>
-                          <span className="text-xs text-gray-400 font-body">
+                          <span className="text-base text-[#4b4c53] font-body">
                             {rev.time}
                           </span>
                         </div>
 
                         {/* Stars */}
-                        <div className="flex items-center gap-1 text-gray-900 mb-3">
+                        <div className="flex items-center gap-1 text-[#4b4c53] mb-3">
                           {[...Array(5)].map((_, idx) => (
                             <FaStar key={idx} className="w-3.5 h-3.5" />
                           ))}
                         </div>
 
-                        <p className="text-gray-600 text-[13px] sm:text-[14px] leading-relaxed font-body">
+                        <p className="text-[#4b4c53] text-[13px] sm:text-[16px] leading-relaxed font-body">
                           &ldquo;{rev.quote}&rdquo;
                         </p>
                       </div>
@@ -536,21 +531,21 @@ export default function CourseDetailsPage() {
             <div className="bg-white rounded-[28px] p-6 sm:p-7 border border-gray-100 shadow-xl flex flex-col gap-6">
               {/* Header: Lessons summary */}
               <div>
-                <h3 className="font-bold text-gray-950 text-[18px] sm:text-[20px] font-heading tracking-tight">
+                <h3 className="font-semibold text-black text-[18px] sm:text-[20px] font-heading tracking-tight">
                   112 Lessons (24 hours)
                 </h3>
 
                 {/* Sample Lessons */}
-                <div className="mt-4 space-y-2.5 text-xs sm:text-[13px]">
-                  <div className="flex items-center justify-between text-gray-800">
+                <div className="mt-4 space-y-2.5 text-xs sm:text-[16px] font-medium">
+                  <div className="flex items-center justify-between text-[#242528]">
                     <span className="truncate pr-2">01 Introduction to Digital Assets</span>
                     <span className="text-primary font-semibold shrink-0">12 mins</span>
                   </div>
-                  <div className="flex items-center justify-between text-gray-800">
+                  <div className="flex items-center justify-between text-[#242528]">
                     <span className="truncate pr-2">02 Design Principles for Impact</span>
                     <span className="text-primary font-semibold shrink-0">21 mins</span>
                   </div>
-                  <div className="flex items-center justify-between text-gray-800">
+                  <div className="flex items-center justify-between text-[#242528]">
                     <span className="truncate pr-2">03 Advanced Techniques in Digital Creation</span>
                     <span className="text-primary font-semibold shrink-0">16 mins</span>
                   </div>
@@ -559,7 +554,7 @@ export default function CourseDetailsPage() {
                 <button
                   type="button"
                   onClick={() => setActiveTab("lesson")}
-                  className="mt-3 text-xs text-gray-400 hover:text-primary transition-colors cursor-pointer font-medium"
+                  className="mt-3 text-lg text-[#4b4c53] hover:text-primary transition-colors cursor-pointer font-medium"
                 >
                   95 more videos
                 </button>
@@ -567,7 +562,7 @@ export default function CourseDetailsPage() {
 
               {/* Ready to dive in & Price */}
               <div>
-                <p className="text-xs text-gray-500 font-body leading-relaxed mb-3">
+                <p className="text-lg text-[#4b4c53] leading-relaxed mb-3">
                   Ready to Dive In? Enroll Now and Start Building Your Digital Future!
                 </p>
 
@@ -575,7 +570,7 @@ export default function CourseDetailsPage() {
                   <span className="font-bold text-primary text-[28px] font-heading tracking-tight">
                     $25
                   </span>
-                  <span className="text-gray-500 text-xs font-normal font-body">
+                  <span className="text-[#4b4c53] text-lg font-normal font-body">
                     /lifetime
                   </span>
                 </div>
@@ -591,10 +586,10 @@ export default function CourseDetailsPage() {
 
               {/* This course include */}
               <div className="pt-2 border-t border-gray-100">
-                <h4 className="font-bold text-gray-950 text-sm font-heading mb-3">
+                <h4 className="font-medium text-gray-950 text-lg font-heading mb-3">
                   This course include
                 </h4>
-                <div className="space-y-2.5 text-xs text-gray-600 font-medium">
+                <div className="space-y-2.5 text-[#4b4c53]">
                   <div className="flex items-center gap-2.5">
                     <FiFileText className="w-4 h-4 text-primary shrink-0" />
                     <span>Learning Resources</span>
@@ -626,22 +621,22 @@ export default function CourseDetailsPage() {
                     />
                   </div>
                   <div>
-                    <h5 className="font-bold text-gray-950 text-sm font-heading">
+                    <h5 className="font-medium text-black text-lg font-heading">
                       PurePearl Studio
                     </h5>
-                    <span className="text-xs text-gray-500 font-body">
+                    <span className="text-lg text-[#4b4c53] font-body">
                       Professional Creator
                     </span>
                   </div>
                 </div>
 
-                <p className="text-[11px] text-gray-400 font-body">
+                <p className="text-[16px] text-[#4b4c53] font-body">
                   Ready to Dive In? Enroll Now and Start Building Your Digital Future!
                 </p>
 
                 <button
                   type="button"
-                  className="self-start px-4 py-1.5 rounded-full border border-gray-200 text-xs font-semibold text-gray-700 hover:border-gray-400 hover:text-black transition-all cursor-pointer shadow-2xs"
+                  className="self-start px-4 py-1.5 rounded-full border border-gray-200 text-[16px] text-[#4b4c53] font-medium  hover:border-gray-400 hover:text-black transition-all cursor-pointer shadow-2xs"
                 >
                   See Full Profile
                 </button>

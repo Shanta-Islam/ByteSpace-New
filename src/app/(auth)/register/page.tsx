@@ -31,9 +31,7 @@ export default function RegisterPage() {
 
       {/* Logo */}
       <header className="relative z-30 max-w-[1240px] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
-        <Link href="/" className="inline-block">
           <ByteSpaceLogo theme="light" showText={false} />
-        </Link>
       </header>
 
       {/* Main */}

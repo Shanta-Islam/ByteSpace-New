@@ -2,10 +2,16 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import ByteSpaceLogo from "@/components/shared/ByteSpaceLogo";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
+  const pathname = usePathname();
+
+  if (pathname === "/login" || pathname === "/register") {
+    return null;
+  }
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();

@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import HeroNavbar from "./HeroNavbar";
 import HeroSearch from "./HeroSearch";
 import HeroDecorations from "./HeroDecorations";
 import {
@@ -24,14 +23,11 @@ export default function HeroLanding() {
         aria-hidden="true"
       />
 
-      {/* 2. Top Navigation Bar */}
-      <HeroNavbar />
-
-      {/* 3. Floating 3D Geometric Decorations */}
+      {/* 2. Floating 3D Geometric Decorations */}
       <HeroDecorations />
 
-      {/* 4. Main Hero Typography & Search */}
-      <div className="relative z-20 max-w-310 mx-auto px-4 sm:px-6 lg:px-8 pt-7 sm:pt-9 md:pt-11 text-center">
+      {/* 3. Main Hero Typography & Search */}
+      <div className="relative z-20 max-w-310 mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32 text-center">
         {/* Main Headline */}
         <h1 className="text-white font-semibold text-[32px] sm:text-[44px] md:text-[56px] lg:text-[72px] leading-[1.14] tracking-tight font-heading max-w-4xl mx-auto">
           Get Access to Hundreds

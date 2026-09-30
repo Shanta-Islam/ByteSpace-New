@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
-import { FaStar } from "react-icons/fa";
-import { BsBarChartFill } from "react-icons/bs";
+import CourseCard from "@/components/shared/CourseCard";
+import { CourseItem } from "@/types/course";
 
 const FILTER_ROWS = [
   [
@@ -33,19 +32,6 @@ const FILTER_ROWS = [
   ],
 ];
 
-interface CourseItem {
-  id: string;
-  title: string;
-  instructor: string;
-  rating: number;
-  lessons: string;
-  duration: string;
-  comments: string;
-  level: string;
-  price: string;
-  image: string;
-  category: string;
-}
 
 const COURSES: CourseItem[] = [
   {
@@ -128,13 +114,6 @@ const COURSES: CourseItem[] = [
   },
 ];
 
-const STUDENT_AVATARS = [
-  "/images/avatars/student-1.png",
-  "/images/avatars/student-2.png",
-  "/images/avatars/student-3.png",
-  "/images/avatars/student-4.png",
-];
-
 export default function CourseDiscoverySection() {
   const [selectedFilter, setSelectedFilter] = useState("Featured");
 
@@ -200,93 +179,7 @@ export default function CourseDiscoverySection() {
         {/* 6 Course Cards Grid */}
         <div className="mt-11 sm:mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
           {filteredCourses.map((course) => (
-            <div
-              key={course.id}
-              className="bg-white rounded-[22px] p-3.5 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
-            >
-              {/* Card Thumbnail Image */}
-              <div className="relative w-full aspect-16/10 rounded-2xl overflow-hidden bg-gray-100">
-                <Image
-                  src={course.image}
-                  alt={course.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-
-                {/* Frosted badges row inside image */}
-                <div className="absolute inset-x-2 bottom-2.5 flex items-center justify-between gap-1.5 px-1">
-                  <span className="bg-[#f6f6f6]/60 backdrop-blur-md text-[#4f4f4f] text-[12px] font-medium px-2.5 py-1 rounded-3xl whitespace-nowrap">
-                    {course.lessons}
-                  </span>
-                  <span className="bg-[#f6f6f6]/60 backdrop-blur-md text-[#4f4f4f] text-[12px] font-medium px-2.5 py-1 rounded-3xl whitespace-nowrap">
-                    {course.duration}
-                  </span>
-                  <span className="bg-[#f6f6f6]/60 backdrop-blur-md text-[#4f4f4f] text-[12px] font-medium px-2.5 py-1 rounded-3xl whitespace-nowrap">
-                    {course.comments}
-                  </span>
-                </div>
-              </div>
-
-              {/* Card Body */}
-              <div className="pt-4 px-2 pb-2">
-                {/* Title & Rating */}
-                <div className="flex items-start justify-between gap-2">
-                  <h3 className="font-semibold text-gray-950 text-[20px] leading-[1.3] font-heading group-hover:text-primary transition-colors">
-                    {course.title}
-                  </h3>
-                  <div className="flex items-center gap-1 text-[18px] text-[#4f4f4f] shrink-0 font-normal font-body">
-                    <span>{course.rating.toFixed(1)}</span>
-                    <FaStar className="w-3.75 h-3.75 text-[#ced0d3]" />
-                  </div>
-                </div>
-
-                {/* Instructor */}
-                <p className="mt-1 text-xs text-[#4f4f4f] font-normal font-body">
-                  by <span className="text-primary">{course.instructor}</span>
-                </p>
-
-                {/* Level badge & Avatar stack */}
-                <div className="mt-3.5 flex items-center gap-3 pt-1">
-                  {/* Level Pill */}
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-3xl bg-[#f5f5f6] text-gray-600 text-[11px] font-medium font-body">
-                    <BsBarChartFill className="w-2.5 h-2.5 text-[#4b4c53]" />
-                    <span className="text-[#4b4c53]">{course.level}</span>
-                  </div>
-
-                  {/* Avatar Stack */}
-                  <div className="flex items-center -space-x-2">
-                    {STUDENT_AVATARS.map((src, idx) => (
-                      <div
-                        key={idx}
-                        className="relative w-8 h-8 rounded-full border border-white overflow-hidden bg-gray-200 shrink-0 shadow-2xs"
-                      >
-                        <Image
-                          src={src}
-                          alt="Student"
-                          fill
-                          sizes="20px"
-                          className="object-cover"
-                        />
-                      </div>
-                    ))}
-                    <div className="relative w-8 h-8 rounded-full bg-lime-brand text-gray-950 text-[8px] font-bold flex items-center justify-center border border-white shrink-0 font-heading">
-                      26+
-                    </div>
-                  </div>
-                </div>
-
-                {/* Price Divider & Value */}
-                <div className="mt-3.5 pt-3 border-t border-gray-100 flex items-baseline gap-1.5">
-                  <span className="font-semibold text-primary text-[20px] font-heading tracking-tight">
-                    {course.price}
-                  </span>
-                  <span className="text-gray-700 text-xs font-normal font-body">
-                    /lifetime
-                  </span>
-                </div>
-              </div>
-            </div>
+            <CourseCard key={course.id} course={course} />
           ))}
         </div>
       </div>

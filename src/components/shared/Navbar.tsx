@@ -3,25 +3,39 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import ByteSpaceLogo from "@/components/shared/ByteSpaceLogo";
 import { HiBars3, HiXMark } from "react-icons/hi2";
 
-const NAV_LINKS = [
-  { name: "Home", href: "/", active: true },
-  { name: "Courses", href: "/courses", active: false },
-  { name: "Creators", href: "/creators", active: false },
-];
-
-export default function HeroNavbar() {
+export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Hide Navbar completely on auth pages (login, register)
+  if (pathname === "/login" || pathname === "/register") {
+    return null;
+  }
+
+  const isHomeActive = pathname === "/";
+  const isCoursesActive =
+    pathname.startsWith("/courses") ||
+    pathname === "/search" ||
+    pathname === "/course-details";
+  const isCreatorsActive = pathname.startsWith("/creators");
+
+  const NAV_LINKS = [
+    { name: "Home", href: "/", active: isHomeActive },
+    { name: "Courses", href: "/courses", active: isCoursesActive },
+    { name: "Creators", href: "/creators", active: isCreatorsActive },
+  ];
 
   return (
-    <header className="relative z-40 w-full pt-5 sm:pt-6">
+    <header className="absolute top-0 left-0 right-0 z-40 w-full pt-5 sm:pt-6">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
           {/* Left: Brand Logo */}
           <div className="flex items-center">
-            <ByteSpaceLogo theme="light" />
+              <ByteSpaceLogo theme="light" />
           </div>
 
           {/* Center: Desktop Navigation Links */}
@@ -30,10 +44,11 @@ export default function HeroNavbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-[16px] transition-colors duration-200 ${link.active
-                  ? "text-[#f5f5f6] font-medium"
-                  : "text-[#f5f5f6]/75 hover:text-[#f5f5f6] font-normal"
-                  }`}
+                className={`text-[16px] transition-colors duration-200 ${
+                  link.active
+                    ? "text-[#f5f5f6] font-medium"
+                    : "text-[#f5f5f6]/75 hover:text-[#f5f5f6] font-normal"
+                }`}
               >
                 {link.name}
               </Link>
@@ -61,7 +76,7 @@ export default function HeroNavbar() {
             <button
               type="button"
               aria-label="Shopping Cart"
-              className="transition-colors duration-200 p-1.5 focus:outline-none"
+              className="transition-colors duration-200 p-1.5 focus:outline-none cursor-pointer"
             >
               <Image
                 src="/images/shopping-cart.svg"
@@ -72,13 +87,12 @@ export default function HeroNavbar() {
               />
             </button>
 
-
             {/* Mobile Hamburger Toggle */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              className="md:hidden text-white hover:text-[#D4FB20] p-1.5 focus:outline-none transition-colors"
+              className="md:hidden text-white hover:text-lime-brand p-1.5 focus:outline-none transition-colors cursor-pointer"
             >
               {mobileMenuOpen ? (
                 <HiXMark className="w-6 h-6" />
@@ -89,37 +103,36 @@ export default function HeroNavbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation Drawer */}
+        {/* Mobile Navigation Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-3 p-5 bg-[#0034c7]/95 backdrop-blur-md rounded-2xl border border-white/10 shadow-2xl space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
-            <nav className="flex flex-col gap-3">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`py-2 text-[15px] transition-colors ${link.active
-                    ? "text-[#D4FB20] font-semibold"
+          <div className="md:hidden mt-3 p-5 bg-[#003BE2]/95 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl flex flex-col gap-3">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`text-base py-1.5 transition-colors ${
+                  link.active
+                    ? "text-lime-brand font-semibold"
                     : "text-white/80 hover:text-white"
-                    }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </nav>
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
 
-            <div className="pt-3 border-t border-white/10 flex flex-col gap-2.5">
+            <div className="pt-3 border-t border-white/15 flex items-center justify-between">
               <Link
                 href="/login"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 text-[15px] text-white/90 hover:text-white"
+                className="text-white text-sm font-medium hover:underline"
               >
                 Sign In
               </Link>
               <Link
                 href="/register"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2.5 text-center text-sm font-semibold rounded-full bg-[#D4FB20] text-gray-950 hover:bg-[#c2e917] transition-colors"
+                className="bg-lime-brand text-black font-semibold px-4 py-1.5 rounded-full text-sm shadow-xs"
               >
                 Join Us
               </Link>

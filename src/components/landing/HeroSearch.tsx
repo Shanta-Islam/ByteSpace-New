@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { FiSearch } from "react-icons/fi";
 
 interface HeroSearchProps {
@@ -10,11 +11,14 @@ interface HeroSearchProps {
 
 export default function HeroSearch({ onSearch, className = "" }: HeroSearchProps) {
   const [query, setQuery] = useState("");
+  const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (onSearch) {
       onSearch(query);
+    } else {
+      router.push(`/courses${query ? `?q=${encodeURIComponent(query)}` : ""}`);
     }
   };
 

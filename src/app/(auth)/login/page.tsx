@@ -5,12 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import ByteSpaceLogo from "@/components/shared/ByteSpaceLogo";
 
-const STUDENT_AVATARS = [
-  "/images/avatars/student-1.png",
-  "/images/avatars/student-2.png",
-  "/images/avatars/student-3.png",
-  "/images/avatars/student-4.png",
-];
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");

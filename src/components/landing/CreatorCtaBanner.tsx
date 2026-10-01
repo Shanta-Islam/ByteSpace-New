@@ -15,7 +15,7 @@ export default function CreatorCtaBanner() {
       {/* 1. Top-Left: Lime Wavy Spiral */}
       <div className="absolute top-[-23%] w-30 sm:w-42 lg:w-96.25 aspect-267/387 select-none pointer-events-none z-0">
         <Image
-          src="/images/cta_banner/frame.svg"
+          src="/images/cta_banner/Frame.svg"
           alt=""
           fill
           className="object-contain"
@@ -25,7 +25,7 @@ export default function CreatorCtaBanner() {
       {/* 2. Mid-Left: White Pyramid / Tetrahedron */}
       <div className="absolute left-[-2%] bottom-[14%] w-[65px] sm:w-[95px] lg:w-[188px] aspect-square select-none pointer-events-none z-0">
         <Image
-          src="/images/cta_banner/frame-5.svg"
+          src="/images/cta_banner/Frame-5.svg"
           alt=""
           fill
           className="object-contain "
@@ -35,7 +35,7 @@ export default function CreatorCtaBanner() {
       {/* 3. Bottom-Left: Lime Donut / Torus */}
       <div className="absolute left-[11%] bottom-[-16%] w-[140px] sm:w-[342px] aspect-square select-none pointer-events-none z-0 brightness-110">
         <Image
-          src="/images/cta_banner/frame-7.svg"
+          src="/images/cta_banner/Frame-7.svg"
           alt=""
           fill
           className="object-contain"
@@ -55,7 +55,7 @@ export default function CreatorCtaBanner() {
       {/* 5. Far Top-Right: White Cylinder */}
       <div className="absolute -right-0 top-1.5 w-[110px] sm:w-[250px] aspect-[213/372] select-none pointer-events-none z-0">
         <Image
-          src="/images/cta_banner/frame-4.svg"
+          src="/images/cta_banner/Frame-4.svg"
           alt=""
           fill
           className="object-contain"
@@ -65,7 +65,7 @@ export default function CreatorCtaBanner() {
       {/* 6. Bottom-Right: Lime Wavy Spiral */}
       <div className="absolute -right-8 bottom-[-26%] w-[130px] sm:w-[305px] aspect-[267/387] select-none pointer-events-none z-0 rotate-6">
         <Image
-          src="/images/cta_banner/frame-6.svg"
+          src="/images/cta_banner/Frame-6.svg"
           alt=""
           fill
           className="object-contain "
